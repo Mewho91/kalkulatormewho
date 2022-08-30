@@ -1,50 +1,22 @@
-import tkinter
-from tkinter import ttk
 import funcgui
-
-import functions
+from gui import *
 from tkinter import *
+import tkinter
 
-import tk as tk
-fg = funcgui.Funcgui()
-# fc = functions.Functions()
-# #TODO 1 Zaprojektować przyjmowanie inputów do kalkulatora
-# print("Welcome to basic calculator")
+
+
+# fg = funcgui.Funcgui()
+# g = gui.Interface
+
 #
-# is_on = True
-# while is_on:
-#     user_input_l1 = float(input("Please chose a number:   "))
-#     user_input_dzialanie = input("Please chose an operation (* , / , + , - )")
-#     user_input_l2 = float(input("Please chose second number "))
-#
-#     if user_input_dzialanie == "*":
-#         print(f"Result is : {fc.multiplication(user_input_l1, user_input_l2)}")
-#         is_on = fc.restart()
-#     elif user_input_dzialanie == "/":
-#         print(f"Result is : {fc.division(user_input_l1, user_input_l2)}")
-#         is_on = fc.restart()
-#     elif user_input_dzialanie == "+":
-#         print(f"Result is : {fc.sum(user_input_l1, user_input_l2)}")
-#         is_on = fc.restart()
-#     elif user_input_dzialanie == "-":
-#         print(f"Result is : {fc.diffrence(user_input_l1, user_input_l2)}")
-#         is_on = fc.restart()
-#     else:
-#         print("You've chosen a wrong operation sign")
-
-
-#todo 3 Zaprojektować graficzny szatę kalkulatora za pomocą tkinter
-
 root = tkinter.Tk()
 root.title("Calculator")
 root.config(padx=100, pady=20)
 
 filed_text = ""
-entry = Entry(width=11, font=("Times", "45", "bold"))
+entry = Entry(width=11, font=("Times", "45", "bold"), justify= RIGHT)
 entry.grid(column=0, row=0, columnspan=4)
 expression = ""
-# trzeba tu napisac ze bierze "score" z funkcji gui oraz ze ma pisac od prawej na początku niech wyświetla zero
-# TODO oraz następnie, żeby dodawal liczbę za kazdym wcisnieciem klawisza
 
 buttonC = Button(width=10, height=5, text="C")
 buttonC.grid(column=0, row=1)
@@ -105,4 +77,51 @@ buttonR.grid(column=2, row=5, columnspan=3)
 
 root.mainloop()
 
-#todo 4 Dodać funkcjonalność + szatę graficzną
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# fc = functions.Functions()
+# print("Welcome to basic calculator")
+#
+# is_on = True
+# while is_on:
+#     user_input_l1 = float(input("Please chose a number:   "))
+#     user_input_dzialanie = input("Please chose an operation (* , / , + , - )")
+#     user_input_l2 = float(input("Please chose second number "))
+#
+#     if user_input_dzialanie == "*":
+#         print(f"Result is : {fc.multiplication(user_input_l1, user_input_l2)}")
+#         is_on = fc.restart()
+#     elif user_input_dzialanie == "/":
+#         print(f"Result is : {fc.division(user_input_l1, user_input_l2)}")
+#         is_on = fc.restart()
+#     elif user_input_dzialanie == "+":
+#         print(f"Result is : {fc.sum(user_input_l1, user_input_l2)}")
+#         is_on = fc.restart()
+#     elif user_input_dzialanie == "-":
+#         print(f"Result is : {fc.diffrence(user_input_l1, user_input_l2)}")
+#         is_on = fc.restart()
+#     else:
+#         print("You've chosen a wrong operation sign")
