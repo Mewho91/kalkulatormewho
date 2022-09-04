@@ -2,23 +2,27 @@ import funcgui
 from gui import *
 from tkinter import *
 import tkinter
+from functions import *
 
 
+def delete():
+    main_entry.delete(0, END)
 
-# fg = funcgui.Funcgui()
-# g = gui.Interface
+def entry_get():
+    entry1= main_entry.get()
+    return print(entry1)
 
-#
+
 root = tkinter.Tk()
 root.title("Calculator")
 root.config(padx=100, pady=20)
 
 filed_text = ""
-entry = Entry(width=11, font=("Times", "45", "bold"), justify= RIGHT)
-entry.grid(column=0, row=0, columnspan=4)
-expression = ""
+main_entry = Entry(width=11, font=("Times", "45", "bold"))
+main_entry.grid(column=0, row=0, columnspan=4)
 
-buttonC = Button(width=10, height=5, text="C")
+
+buttonC = Button(width=10, height=5, text="C", command=delete)
 buttonC.grid(column=0, row=1)
 
 button_mnozenie = Button(width=10, height=5, text="X")
@@ -36,46 +40,47 @@ button_odejmowanie.grid(column=3, row=3)
 button_procent = Button(width=10, height=5, text="%")
 button_procent.grid(column=3, row=4)
 
-button1 = Button(width=10, height=5, text="1", command=lambda : entry.insert(0, 1))
+button1 = Button(width=10, height=5, text="1", command=lambda : main_entry.insert(0, 1))
 button1.grid(column=0, row=2)
 
-button2 = Button(width=10, height=5, text="2", command=lambda : entry.insert(0, 2))
+button2 = Button(width=10, height=5, text="2", command=lambda : main_entry.insert(0, 2))
 button2.grid(column=1, row=2)
 
-button3 = Button(width=10, height=5, text="3", command=lambda : entry.insert(0, 3))
+button3 = Button(width=10, height=5, text="3", command=lambda : main_entry.insert(0, 3))
 button3.grid(column=2, row=2)
 
-button4 = Button(width=10, height=5, text="4", command=lambda : entry.insert(0, 4))
+button4 = Button(width=10, height=5, text="4", command=lambda : main_entry.insert(0, 4))
 button4.grid(column=0, row=3)
 
-button5 = Button(width=10, height=5, text="5", command=lambda : entry.insert(0, 5))
+button5 = Button(width=10, height=5, text="5", command=lambda : main_entry.insert(0, 5))
 button5.grid(column=1, row=3)
 
-button6 = Button(width=10, height=5, text="6", command=lambda : entry.insert(0, 6))
+button6 = Button(width=10, height=5, text="6", command=lambda : main_entry.insert(0, 6))
 button6.grid(column=2, row=3)
 
-button7 = Button(width=10, height=5, text="7", command=lambda : entry.insert(0, 7))
+button7 = Button(width=10, height=5, text="7", command=lambda : main_entry.insert(0, 7))
 button7.grid(column=0, row=4)
 
-button8 = Button(width=10, height=5, text="8", command=lambda : entry.insert(0, 8))
+button8 = Button(width=10, height=5, text="8", command=lambda : main_entry.insert(0, 8))
 button8.grid(column=1, row=4)
 
-button9 = Button(width=10, height=5, text="9", command=lambda : entry.insert(0, 9))
+button9 = Button(width=10, height=5, text="9", command=lambda : main_entry.insert(0, 9))
 button9.grid(column=2, row=4)
 
-button0 = Button(width=10, height=5, text="0", command=lambda : entry.insert(0, 0))
+button0 = Button(width=10, height=5, text="0", command=lambda : main_entry.insert(0, 0))
 button0.grid(column=0, row=5)
 
-buttonP = Button(width=10, height=5, text=".", command=lambda : entry.insert(0, "."))
+buttonP = Button(width=10, height=5, text=".", command=lambda : main_entry.insert(0, "."))
 buttonP.grid(column=1, row=5)
 
-buttonR = Button(width=21, height=5, text="=")
+buttonR = Button(width=21, height=5, text="=", command=entry_get)
 buttonR.grid(column=2, row=5, columnspan=3)
 
 
 
 
 root.mainloop()
+
 
 
 

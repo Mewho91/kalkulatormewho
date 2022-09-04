@@ -1,4 +1,3 @@
-#TODO 2 Zaprojektować funkcję dodawania, odejmowania, mnozenia, dzielenia, procentów
 import main
 class Functions:
 
@@ -32,7 +31,7 @@ class Functions:
             return True
 
     def press(num):
-        main.expression = main.expression + str(num)
+        main.expression = str(num) + main.expression
         return main.expression
 
 
