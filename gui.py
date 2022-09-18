@@ -112,7 +112,7 @@ class Gui:
 # __________________________________________________________________________________-TODO 3 dzielenie przez zero
         if self.operation == "/":
             if float(current_input) == 0:
-                self.main_entry.insert(0, "Nie dziel przez zero")
+                self.insert_to_entry("Nie dziel przez zero")
             else:
                 self.current_result = float(self.last_input) / float(current_input)
                 self.clear_screen()
