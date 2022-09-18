@@ -107,21 +107,13 @@ class Gui:
         current_input = self.take_value_from_screen()
         if self.operation == "X":
             self.current_result = float(self.last_input) * float(current_input)
-        self.clear_screen()
-        self.insert_to_entry(self.current_result)
-# __________________________________________________________________________________-TODO 3 dzielenie przez zero
         if self.operation == "/":
-            if float(current_input) == 0:
-                self.insert_to_entry("Nie dziel przez zero")
+            if float(current_input) == float(0):
+                self.current_result= "Nie dziel przez zero"
             else:
                 self.current_result = float(self.last_input) / float(current_input)
-                self.clear_screen()
-                self.insert_to_entry(self.current_result)
-# __________________________________________________________________________________-TODO 3 dzielenie przez zero
         if self.operation == "+":
             self.current_result = float(self.last_input) + float(current_input)
-        self.clear_screen()
-        self.insert_to_entry(self.current_result)
         if self.operation == "-":
             self.current_result = float(self.last_input) - float(current_input)
         self.clear_screen()
@@ -130,5 +122,4 @@ class Gui:
 
 # TODO 1 : Zrobić procenty
 # TODO 2: można wcisnąć korpkę nawet jak juz jedna kropka jest
-# TODO 3 : dzielenie przez zero
 # TODO 4 : Mozna wpisac zero przed kazda liczba
