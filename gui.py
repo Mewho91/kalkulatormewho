@@ -10,9 +10,9 @@ class Gui:
         self.main_entry = None
         self.operation = None
         self.current_result = 0
-        self.prepare_tkinter()
+        self.run_tkinter()
 
-    def prepare_tkinter(self):
+    def run_tkinter(self):
         root = tkinter.Tk()
         root.title("Calculator")
         root.config(padx=100, pady=20)
@@ -44,7 +44,7 @@ class Gui:
         button_procent = Button(width=10, height=5, text="%")
         button_procent.grid(column=3, row=4)
 
-        buttonR = Button(width=21, height=5, text="=", command=self.wynik)
+        buttonR = Button(width=21, height=5, text="=", command=self.result)
         buttonR.grid(column=2, row=5, columnspan=3)
 
     def przygotowanie_przyciskow_liczbowych(self):
@@ -84,33 +84,39 @@ class Gui:
     def clear_screen(self):
         self.main_entry.delete(0, END)
 
-    def pobiera_aktualna_wartosc_wyswietlacza(self):
+    def take_value_from_screen(self):
         return self.main_entry.get()
 
-    def dlugosc_wyswietlacza(self):
+    def len_oF_value(self):
         return len(self.main_entry.get())
+
 
     def insert_to_entry(self, value):
         if self.operation_button_pressed:
             self.clear_screen()
             self.operation_button_pressed = False
-        self.main_entry.insert(self.dlugosc_wyswietlacza(), value)
+        self.main_entry.insert(self.len_oF_value(), value)
 
     def set_operation(self, operation):
-        self.last_input = self.pobiera_aktualna_wartosc_wyswietlacza()
+        self.last_input = self.take_value_from_screen()
         self.operation = operation
         self.operation_button_pressed = True
 
-    def wynik(self):
-        current_input = self.pobiera_aktualna_wartosc_wyswietlacza()
+    def result(self):
+        current_input = self.take_value_from_screen()
         if self.operation == "X":
             self.current_result = float(self.last_input) * float(current_input)
         self.clear_screen()
         self.insert_to_entry(self.current_result)
+# __________________________________________________________________________________-TODO 3 dzielenie przez zero
         if self.operation == "/":
-            self.current_result = float(self.last_input) / float(current_input)
-        self.clear_screen()
-        self.insert_to_entry(self.current_result)
+            if current_input == 0:
+                self.main_entry.inser("Nie dziel przez zero")
+            else:
+                self.current_result = float(self.last_input) / float(current_input)
+                self.clear_screen()
+                self.insert_to_entry(self.current_result)
+# __________________________________________________________________________________-TODO 3 dzielenie przez zero
         if self.operation == "+":
             self.current_result = float(self.last_input) + float(current_input)
         self.clear_screen()
@@ -124,3 +130,4 @@ class Gui:
 # TODO 1 : Zrobić procenty
 # TODO 2: można wcisnąć korpkę nawet jak juz jedna kropka jest
 # TODO 3 : dzielenie przez zero
+# TODO 4 : Mozna wpisac zero przed kazda liczba
