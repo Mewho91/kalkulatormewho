@@ -76,7 +76,7 @@ class Gui:
         button9 = Button(width=10, height=5, text="9", command=lambda: self.insert_to_entry(9))
         button9.grid(column=2, row=4)
 
-        button0 = Button(width=10, height=5, text="0", command=lambda: self.insert_to_entry(0))
+        button0 = Button(width=10, height=5, text="0", command=lambda: self.insert_zero())
         button0.grid(column=0, row=5)
 
         buttonP = Button(width=10, height=5, text=".", command=lambda: self.insert_dot())
@@ -102,6 +102,13 @@ class Gui:
         if "." not in self.take_value_from_screen():
             self.insert_to_entry(".")
 
+    def insert_zero(self):
+        if len(self.main_entry.get()) == 0:
+            pass
+        else :
+            self.insert_to_entry(0)
+
+
     def set_operation(self, operation):
         self.last_input = self.take_value_from_screen()
         self.operation = operation
@@ -125,4 +132,4 @@ class Gui:
 
 
 # TODO 1 : Zrobić procenty
-# TODO 4 : Mozna wpisac zero przed kazda liczba
+
