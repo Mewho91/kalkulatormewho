@@ -42,7 +42,7 @@ class Gui:
         button_odejmowanie = Button(width=10, height=5, text="-", command=lambda: self.set_operation("-"))
         button_odejmowanie.grid(column=3, row=3)
 
-        button_procent = Button(width=10, height=5, text="%")
+        button_procent = Button(width=10, height=5, text="%", command=lambda: self.set_operation("%"))
         button_procent.grid(column=3, row=4)
 
         buttonR = Button(width=21, height=5, text="=", command=self.result)
@@ -79,7 +79,7 @@ class Gui:
         button0 = Button(width=10, height=5, text="0", command=lambda: self.insert_to_entry(0))
         button0.grid(column=0, row=5)
 
-        buttonP = Button(width=10, height=5, text=".", command=lambda: self.insert_to_entry("."))
+        buttonP = Button(width=10, height=5, text=".", command=lambda: self.insert_dot())
         buttonP.grid(column=1, row=5)
 
     def clear_screen(self):
@@ -97,6 +97,10 @@ class Gui:
             self.clear_screen()
             self.operation_button_pressed = False
         self.main_entry.insert(self.len_oF_value(), value)
+
+    def insert_dot(self):
+        if "." not in self.take_value_from_screen():
+            self.insert_to_entry(".")
 
     def set_operation(self, operation):
         self.last_input = self.take_value_from_screen()
@@ -121,5 +125,4 @@ class Gui:
 
 
 # TODO 1 : Zrobić procenty
-# TODO 2: można wcisnąć korpkę nawet jak juz jedna kropka jest
 # TODO 4 : Mozna wpisac zero przed kazda liczba
