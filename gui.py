@@ -22,12 +22,12 @@ class Gui:
         self.main_entry = Entry(width=17, font=("Times", "30", "bold"))
         self.main_entry.grid(column=0, row=0, columnspan=4)
 
-        self.przygotowanie_przyciskow_funkcyjnych()
-        self.przygotowanie_przyciskow_liczbowych()
+        self.function_buttons()
+        self.number_buttons()
 
         root.mainloop()
 
-    def przygotowanie_przyciskow_funkcyjnych(self):
+    def function_buttons(self):
 
         buttonC = Button(width=10, height=5, text="C", command=self.clear_screen)
         buttonC.grid(column=0, row=1)
@@ -50,7 +50,7 @@ class Gui:
         buttonR = Button(width=21, height=5, text="=", cursor="dot", command=self.result)
         buttonR.grid(column=2, row=5, columnspan=3)
 
-    def przygotowanie_przyciskow_liczbowych(self):
+    def number_buttons(self):
         self.bg_color = "Grey"
         button1 = Button(width=10, height=5, bg=self.bg_color, text="1", command=lambda: self.insert_to_entry(1))
         button1.grid(column=0, row=2)
@@ -123,7 +123,7 @@ class Gui:
         self.is_procent_pressed = False
         current_input = self.take_value_from_screen()
         if self.operation == "X":
-            if self.value !=0:
+            if self.value != 0:
                 self.current_result = (float(self.last_input) * (float(self.last_input)*float(current_input))/100)
                 self.value = 0
             else:
@@ -132,14 +132,13 @@ class Gui:
         if self.operation == "/":
             if float(current_input) == float(0):
                 self.current_result= "Nie dziel przez zero"
-            elif self.value != 0:
+            if self.value != 0:
                 self.current_result = (
                             float(self.last_input) / ((float(self.last_input) * float(current_input)) / 100))
                 self.value = 0
             else:
                 self.current_result = float(self.last_input) / float(current_input)
                 self.value = 0
-
         if self.operation == "+":
             if self.value !=0:
                 self.current_result = (float(self.last_input) + (float(self.last_input)*float(current_input))/100)
