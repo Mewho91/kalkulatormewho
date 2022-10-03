@@ -11,9 +11,10 @@ class Gui:
         self.operation = None
         self.current_result = 0
         self.run_tkinter()
-
+        self.value = 0
 
     def run_tkinter(self):
+
         root = tkinter.Tk()
         root.title("Calculator")
         root.config(padx=100, pady=20)
@@ -27,6 +28,7 @@ class Gui:
         root.mainloop()
 
     def przygotowanie_przyciskow_funkcyjnych(self):
+
         buttonC = Button(width=10, height=5, text="C", command=self.clear_screen)
         buttonC.grid(column=0, row=1)
 
@@ -42,13 +44,14 @@ class Gui:
         button_odejmowanie = Button(width=10, height=5, text="-", command=lambda: self.set_operation("-"))
         button_odejmowanie.grid(column=3, row=3)
 
-        button_procent = Button(width=10, height=5, text="%", command=lambda: self.set_operation("%"))
+        button_procent = Button(width=10, height=5, text="%", command=lambda: self.procent_pressed(1))
         button_procent.grid(column=3, row=4)
 
         buttonR = Button(width=21, height=5, text="=", command=self.result)
         buttonR.grid(column=2, row=5, columnspan=3)
 
     def przygotowanie_przyciskow_liczbowych(self):
+
         button1 = Button(width=10, height=5, text="1", command=lambda: self.insert_to_entry(1))
         button1.grid(column=0, row=2)
 
@@ -91,7 +94,6 @@ class Gui:
     def len_oF_value(self):
         return len(self.main_entry.get())
 
-
     def insert_to_entry(self, value):
         if self.operation_button_pressed:
             self.clear_screen()
@@ -108,28 +110,49 @@ class Gui:
         else :
             self.insert_to_entry(0)
 
+    def procent_pressed(self, val):
+        self.value = 0 + val
 
     def set_operation(self, operation):
         self.last_input = self.take_value_from_screen()
         self.operation = operation
         self.operation_button_pressed = True
 
+
     def result(self):
+        self.is_procent_pressed = False
         current_input = self.take_value_from_screen()
         if self.operation == "X":
-            self.current_result = float(self.last_input) * float(current_input)
+            if self.value !=0:
+                self.current_result = (float(self.last_input) * (float(self.last_input)*float(current_input))/100)
+                self.value = 0
+            else:
+                self.current_result = float(self.last_input) * float(current_input)
+                self.value = 0
         if self.operation == "/":
             if float(current_input) == float(0):
                 self.current_result= "Nie dziel przez zero"
+            elif self.value != 0:
+                self.current_result = (
+                            float(self.last_input) / ((float(self.last_input) * float(current_input)) / 100))
+                self.value = 0
             else:
                 self.current_result = float(self.last_input) / float(current_input)
+                self.value = 0
+
         if self.operation == "+":
-            self.current_result = float(self.last_input) + float(current_input)
+            if self.value !=0:
+                self.current_result = (float(self.last_input) + (float(self.last_input)*float(current_input))/100)
+                self.value = 0
+            else:
+                self.current_result = float(self.last_input) + float(current_input)
+                self.value = 0
         if self.operation == "-":
-            self.current_result = float(self.last_input) - float(current_input)
+            if self.value !=0:
+                self.current_result = (float(self.last_input) - (float(self.last_input)*float(current_input))/100)
+                self.value = 0
+            else:
+                self.current_result = float(self.last_input) - float(current_input)
+                self.value = 0
         self.clear_screen()
         self.insert_to_entry(self.current_result)
-
-
-# TODO 1 : Zrobić procenty
-
